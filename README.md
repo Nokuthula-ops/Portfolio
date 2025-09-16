@@ -33,7 +33,7 @@ Here are some of the featured projects in this repository:
 ---
 
 ## 📬 Contact
-- **LinkedIn:** [[Your LinkedIn URL](https://www.linkedin.com/in/nokuthula-ngcongo-8221b1315 )]  
+- **LinkedIn:** [https://www.linkedin.com/in/nokuthula-ngcongo-8221b1315 ]  
 - **Email:** [nokuthulangcongo11@gmail.com]  
 - **Portfolio Website:** [https://portfolio-ashen-pi-vrgkt6gc69.vercel.app/]  
 

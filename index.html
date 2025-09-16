@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nokuthula Ngcongo - AI/ML Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255,255,255,0.1);
+        }
+        
+        .skill-bar {
+            transition: width 1s ease-in-out;
+        }
+        
+        .typing-animation {
+            border-right: 2px solid #667eea;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #667eea; }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .project-demo {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .demo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(102, 126, 234, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-demo:hover .demo-overlay {
+            opacity: 1;
+        }
+        
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .nav-link.active {
+            color: #667eea !important;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-white">Nokuthula Ngcongo</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-blue-400 transition-colors" onclick="showSection('home')">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-blue-400 transition-colors" onclick="showSection('about')">About</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-blue-400 transition-colors" onclick="showSection('projects')">Projects</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-blue-400 transition-colors" onclick="showSection('skills')">Skills</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-blue-400 transition-colors" onclick="showSection('contact')">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-gray-800">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#home" class="nav-link block py-2 text-gray-300 hover:text-blue-400" onclick="showSection('home')">Home</a>
+                <a href="#about" class="nav-link block py-2 text-gray-300 hover:text-blue-400" onclick="showSection('about')">About</a>
+                <a href="#projects" class="nav-link block py-2 text-gray-300 hover:text-blue-400" onclick="showSection('projects')">Projects</a>
+                <a href="#skills" class="nav-link block py-2 text-gray-300 hover:text-blue-400" onclick="showSection('skills')">Skills</a>
+                <a href="#contact" class="nav-link block py-2 text-gray-300 hover:text-blue-400" onclick="showSection('contact')">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section active">
+        <div class="gradient-bg min-h-screen flex items-center justify-center text-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <div class="mb-8">
+                    <div class="w-40 h-40 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 p-1 shadow-2xl">
+                        <div class="w-full h-full rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                            <img src="images/AI.gif"></i>
+                        </div>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4">Nokuthula Ngcongo</h1>
+                    <div class="text-xl md:text-2xl mb-6">
+                        <span id="typing-text" class="typing-animation">AI/ML Engineer & Software Developer</span>
+                    </div>
+                    <p class="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+                        Transforming complex data into intelligent solutions through machine learning, deep learning, and innovative AI applications
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showSection('projects')" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        View My Work
+                    </button>
+                    <button onclick="showSection('contact')" class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                        Get In Touch
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">About Me</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <!-- Profile Image & Quick Stats -->
+                <div class="text-center lg:text-left">
+                    <div class="w-64 h-64 mx-auto lg:mx-0 mb-8 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+                        <img src="images/image.jpg"></i>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-800 p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-blue-400">1-2</div>
+                            <div class="text-sm text-gray-300">Years Experience</div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-green-400">07</div>
+                            <div class="text-sm text-gray-300">Projects Completed</div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-purple-400">5+</div>
+                            <div class="text-sm text-gray-300">ML Models Deployed</div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-yellow-400">3</div>
+                            <div class="text-sm text-gray-300">AI Patents</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-white mb-4">Professional Summary</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            I'm an Aspiring Artificial Intelligence and Systems Development professional with hands-on experience from an intensive coding and AI bootcamp. Skilled in Python, machine learning, data analysis, and web development, with practical experience in developing projects, solving technical problems, and supporting learners as a bootcamp assistant. Passionate about leveraging technology to create innovative solutions, while continuously expanding expertise in AI, software development, and data-driven applications.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Through my bootcamp experience, I have developed a strong foundation in systems analysis, software design, and project implementation. I have successfully completed projects that demonstrate problem-solving, creativity, and the application of AI and data science concepts in real-world scenarios. I am adept at collaborating in team environments and communicating technical ideas effectively to diverse audiences.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education & Certifications -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- Education -->
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <i class="fas fa-graduation-cap text-blue-400 mr-3"></i>
+                        Education
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-blue-600 pl-4">
+                            <h4 class="font-semibold text-white">Diploma in Tourism Management</h4>
+                            <p class="text-blue-400">University of South Africa</p>
+                            <p class="text-sm text-gray-400">2024 - 2026</p>
+                            <p class="text-sm text-gray-300 mt-2">Digital Tourism & E-Tourism:
+                                Using technology, apps, and online platforms to promote and manage tourism.</p>
+                            <p class="text-sm text-gray-300">Travel & Tour Operations: 
+                                Planning, organizing, and managing travel packages, tours, and excursions.</p>
+                        </div>
+                        <div class="border-l-4 border-green-600 pl-4">
+                            <h4 class="font-semibold text-white">National Certificate in Systems Development</h4>
+                            <p class="text-green-400">WeThinkCode_</p>
+                            <p class="text-sm text-gray-400">2021 - 2023</p>
+                            <p class="text-sm text-gray-300 mt-2">Software Development – Building applications (desktop, mobile, or web).</p>
+                            <p class="text-sm text-gray-300">Web Development – Frontend, backend, or full-stack development for web-based solutions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <i class="fas fa-certificate text-yellow-400 mr-3"></i>
+                        Certifications
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fab fa-aws text-orange-400 text-xl"></i>
+                            <div>
+                                <p class="text-white font-medium">Generative AI with LMMs</p>
+                                <p class="text-sm text-gray-400">Amazon Web Services • Deep Learning • 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fab fa-google text-blue-400 text-xl"></i>
+                            <div>
+                                <p class="text-white font-medium">AI Essentials </p>
+                                <p class="text-sm text-gray-400">Intel • 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-brain text-purple-400 text-xl"></i>
+                            <div>
+                                <p class="text-white font-medium">AI on Microsoft Azure Certificate</p>
+                                <p class="text-sm text-gray-400">Coursera • 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-chart-line text-green-400 text-xl"></i>
+                            <div>
+                                <p class="text-white font-medium">Deep Learning Specialization</p>
+                                <p class="text-sm text-gray-400">Coursera (Andrew Ng) • 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-code text-red-400 text-xl"></i>
+                            <div>
+                                <p class="text-white font-medium">Networking Basics</p>
+                                <p class="text-sm text-gray-400">NetAcademy • 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Experience -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold text-white mb-8 text-center">Professional Experience</h3>
+                <div class="space-y-8">
+                    <!-- Current Role -->
+                    <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-blue-600">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-white">Artificial Intelligence Candidate</h4>
+                                <p class="text-blue-400 font-medium">CAPACITI</p>
+                            </div>
+                            <div class="text-sm text-gray-400 mt-2 md:mt-0">
+                                <p>Braamfontein, Johannesburg</p>
+                                <p>July 2025 - Present</p>
+                            </div>
+                        </div>
+                        <ul class="text-gray-300 space-y-2 text-sm">
+                            <li>• Completed an intensive program focused on Artificial Intelligence, Systems Development, and Data Science.</li>
+                            <li>• Studied AI fundamentals including supervised/unsupervised learning, neural networks, and natural language processing.</li>
+                            <li>• Collaborated with peers, practiced version control with Git/GitHub, and delivered a final presentation to showcase learning</li>
+                            <li>• Strengthened skills in Python, data preprocessing, and model evaluation.</li>
+                            <li>• Built a professional portfolio consolidating all projects, career materials, and technical skills.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Previous Role -->
+                    <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-green-600">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-white">Coding Bootcamp Assistant</h4>
+                                <p class="text-green-400 font-medium">WeThinkCode_</p>
+                            </div>
+                            <div class="text-sm text-gray-400 mt-2 md:mt-0">
+                                <p>Durban, KZN</p>
+                                <p>2021 - 2023</p>
+                            </div>
+                        </div>
+                        <ul class="text-gray-300 space-y-2 text-sm">
+                            <li>• Assisted learners with coding exercises, debugging, and project development.</li>
+                            <li>• Provided one-on-one support to explain programming concepts in Python, JavaScript, and web development.</li>
+                            <li>• Collaborated with instructors to deliver lessons and ensure smooth class operations.</li>
+                            <li>• Helped manage group projects, fostered teamwork, and guided students in using Git/GitHub for version control.</li>
+                        </ul>
+                    </div>
+
+            <!-- Core Values & Interests -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <i class="fas fa-heart text-red-400 mr-3"></i>
+                        Core Values
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-shield-alt text-blue-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-medium text-white">Ethical AI</h4>
+                                <p class="text-sm text-gray-300">Building responsible AI systems that are fair, transparent, and beneficial to society</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-users text-green-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-medium text-white">Collaboration</h4>
+                                <p class="text-sm text-gray-300">Fostering inclusive teams and knowledge sharing across disciplines</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-lightbulb text-yellow-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-medium text-white">Innovation</h4>
+                                <p class="text-sm text-gray-300">Pushing boundaries while maintaining practical, scalable solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <i class="fas fa-rocket text-purple-400 mr-3"></i>
+                        Beyond Work
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-code-branch text-orange-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-medium text-white">Open Source</h4>
+                                <p class="text-sm text-gray-300">Contributing to ML libraries and maintaining popular GitHub repositories</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-chalkboard-teacher text-blue-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-medium text-white">Teaching</h4>
+                                <p class="text-sm text-gray-300">Mentoring bootcamp students and speaking at AI conferences</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-mountain text-green-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-medium text-white">Adventure</h4>
+                                <p class="text-sm text-gray-300">Rock climbing, hiking, and photography in the Bay Area</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="section py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Featured Projects</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-eye text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">Sentiment Analyzer</h3>
+                        <p class="text-gray-300 text-sm mb-4">This is an interactive dashboard that analyzes sentiment in text data, enabling users to understand emotional tone in customer reviews, social media posts, or other text content.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-600 text-white text-xs rounded">NLP</span>
+                            <span class="px-2 py-1 bg-blue-600 text-white text-xs rounded">Text Classification</span>
+                            <span class="px-2 py-1 bg-blue-600 text-white text-xs rounded">Visualization</span>
+                        </div>
+                        <div class="flex gap-2">
+                             <a href="https://www.loom.com/share/7d501a9f610e4fd296022d07cfad8fbf?sid=625eb6f1-9406-428e-af8b-1bf2f29a2697" target="_blank" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 transition-colors text-center">
+                                Demo Video
+                            </a>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-600 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-comments text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">Notebook</h3>
+                        <p class="text-gray-300 text-sm mb-4">The goal is to demonstrate how datasets can unintentionally lead to unfair model predictions and why addressing bias is critical in AI development.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-green-600 text-white text-xs rounded">Bias</span>
+                            <span class="px-2 py-1 bg-green-600 text-white text-xs rounded">Jupyter</span>
+                            <span class="px-2 py-1 bg-green-600 text-white text-xs rounded">Classification</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="https://www.loom.com/share/a4c6ea30961a4de3934c68509009d4a5?sid=ca077b2f-816d-438e-b595-95ac2fb01812" target="_blank" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 transition-colors text-center">
+                                Demo Video
+                                </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">Generative AI</h3>
+                        <p class="text-gray-300 text-sm mb-4">This tool gives users all the information they need about Nedbank as a business and their services.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-purple-600 text-white text-xs rounded">LMMs</span>
+                            <span class="px-2 py-1 bg-purple-600 text-white text-xs rounded">Prototype</span>
+                            <span class="px-2 py-1 bg-purple-600 text-white text-xs rounded">Generation</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="https://www.loom.com/share/a4c6ea30961a4de3934c68509009d4a5?sid=ca077b2f-816d-438e-b595-95ac2fb01812" target="_blank" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 transition-colors text-center">
+                                Demo Video
+                                </a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Technical Skills & Competencies</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Technical Skills -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">Programming & Frameworks</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Python</span>
+                                    <span class="text-blue-400">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-blue-600 h-2 rounded-full" data-width="95"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">TensorFlow/Keras</span>
+                                    <span class="text-blue-400">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-blue-600 h-2 rounded-full" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">PyTorch</span>
+                                    <span class="text-blue-400">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-blue-600 h-2 rounded-full" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Scikit-learn</span>
+                                    <span class="text-blue-400">92%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-blue-600 h-2 rounded-full" data-width="92"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">SQL/NoSQL</span>
+                                    <span class="text-blue-400">88%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-blue-600 h-2 rounded-full" data-width="88"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">Cloud & DevOps</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">AWS (SageMaker, EC2, S3)</span>
+                                    <span class="text-green-400">87%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-green-600 h-2 rounded-full" data-width="87"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Docker & Kubernetes</span>
+                                    <span class="text-green-400">82%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-green-600 h-2 rounded-full" data-width="82"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">MLOps & CI/CD</span>
+                                    <span class="text-green-400">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-green-600 h-2 rounded-full" data-width="80"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specializations -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">AI/ML Specializations</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-eye text-3xl text-blue-400 mb-2"></i>
+                                <h4 class="font-semibold text-white">Computer Vision</h4>
+                                <p class="text-sm text-gray-300">Object Detection, Image Classification</p>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-language text-3xl text-green-400 mb-2"></i>
+                                <h4 class="font-semibold text-white">NLP</h4>
+                                <p class="text-sm text-gray-300">Sentiment Analysis, Text Generation</p>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-brain text-3xl text-purple-400 mb-2"></i>
+                                <h4 class="font-semibold text-white">Deep Learning</h4>
+                                <p class="text-sm text-gray-300">Neural Networks, Transfer Learning</p>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-chart-line text-3xl text-yellow-400 mb-2"></i>
+                                <h4 class="font-semibold text-white">Time Series</h4>
+                                <p class="text-sm text-gray-300">Forecasting, Anomaly Detection</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">Tools & Technologies</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm">Jupyter</span>
+                            <span class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm">Git</span>
+                            <span class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm">Apache Spark</span>
+                            <span class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm">Tableau</span>
+                            <span class="px-3 py-2 bg-green-600 text-white rounded-lg text-sm">FastAPI</span>
+                            <span class="px-3 py-2 bg-green-600 text-white rounded-lg text-sm">Flask</span>
+                            <span class="px-3 py-2 bg-purple-600 text-white rounded-lg text-sm">OpenCV</span>
+                            <span class="px-3 py-2 bg-purple-600 text-white rounded-lg text-sm">Hugging Face</span>
+                            <span class="px-3 py-2 bg-yellow-600 text-white rounded-lg text-sm">MongoDB</span>
+                            <span class="px-3 py-2 bg-yellow-600 text-white rounded-lg text-sm">PostgreSQL</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">Industry Experience</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-hospital text-red-400"></i>
+                                <span class="text-gray-300">Healthcare & Medical AI</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-shopping-cart text-blue-400"></i>
+                                <span class="text-gray-300">E-commerce & Retail Analytics</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-chart-bar text-green-400"></i>
+                                <span class="text-gray-300">Financial Services & FinTech</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-car text-purple-400"></i>
+                                <span class="text-gray-300">Autonomous Systems</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section py-20 gradient-bg text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4">Let's Connect</h2>
+            <div class="w-24 h-1 bg-white mx-auto mb-8"></div>
+            <p class="text-xl text-gray-300 mb-12">Ready to discuss your next AI/ML project? Let's build something amazing together.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold mb-6">Get In Touch</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <i class="fas fa-envelope text-blue-400 text-xl"></i>
+                                <span class="text-gray-300">nokuthulangcongo11@gmail.com</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <i class="fas fa-phone text-green-400 text-xl"></i>
+                                <span class="text-gray-300">+27 78 224-4771</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <i class="fas fa-map-marker-alt text-red-400 text-xl"></i>
+                                <span class="text-gray-300">Orlando East, Johannesburg</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold mb-6">Professional Links</h3>
+                        <div class="flex justify-center space-x-6">
+                            <a href="https://www.linkedin.com/in/nokuthula-ngcongo-8221b1315" class="text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-linkedin text-3xl"></i>
+                            </a>
+                            <a href="https://github.com/Nokuthula-ops" class="text-gray-300 hover:text-white transition-colors">
+                                <i class="fab fa-github text-3xl"></i>
+                            </a>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-twitter text-3xl"></i>
+                            </a>
+                            <a href="#" class="text-red-400 hover:text-red-300 transition-colors">
+                                <i class="fab fa-youtube text-3xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Contact Form -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-6">Send a Message</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 bg-white/20 border border-white/30 text-white placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 bg-white/20 border border-white/30 text-white placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-3 bg-white/20 border border-white/30 text-white placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="downloadResume()" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-download mr-2"></i>
+                    Download Resume
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="mb-4">&copy; 2025 Nokuthula Ngcongo. All rights reserved.</p>
+            <p class="text-gray-400 text-sm">Built with modern web technologies • Optimized for all devices</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Project Demo Modal -->
+    <div id="demo-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div class="p-6 border-b border-gray-700 flex justify-between items-center">
+                <h3 id="demo-title" class="text-2xl font-bold text-white">Project Demo</h3>
+                <button onclick="closeDemoModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="demo-content" class="p-6 overflow-y-auto max-h-[70vh] text-white">
+                <!-- Demo content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contact-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl max-w-md w-full">
+            <div class="p-6 border-b border-gray-700 flex justify-between items-center">
+                <h3 class="text-2xl font-bold text-white">Get In Touch</h3>
+                <button onclick="closeContactModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                        <input type="text" class="w-full px-4 py-2 bg-gray-800 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-2 bg-gray-800 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-2 bg-gray-800 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Section navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections first
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show only the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Update navigation active state
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find and activate the correct nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(sectionId)) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Close mobile menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Trigger animations for the new section
+            setTimeout(() => {
+                const newSection = document.getElementById(sectionId);
+                if (newSection) {
+                    newSection.querySelectorAll('.fade-in').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                    
+                    // Trigger skill bars if skills section
+                    if (sectionId === 'skills') {
+                        newSection.querySelectorAll('.skill-bar').forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            if (width) {
+                                bar.style.width = width + '%';
+                            }
+                        });
+                    }
+                }
+            }, 100);
+        }
+
+        // Navigation functionality
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Typing animation
+        const typingText = document.getElementById('typing-text');
+        const texts = [
+            'AI/ML Engineer Enthusiast',
+            'Computer Vision ',
+            'NLP & Deep Learning',
+            'MLOps & Cloud Deployment'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+
+            setTimeout(typeWriter, isDeleting ? 50 : 100);
+        }
+
+        typeWriter();
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Project functionality
+        function openProjectDemo(projectType) {
+            const modal = document.getElementById('demo-modal');
+            const title = document.getElementById('demo-title');
+            const content = document.getElementById('demo-content');
+            
+            const demos = {
+                cv: {
+                    title: 'Sentiment Analyzer - Live Demo',
+                    content: `
+                        <div class="space-y-6">
+                            <div class="bg-gradient-to-br from-blue-900 to-purple-900 p-6 rounded-xl">
+                                <h4 class="text-lg font-semibold mb-4">Real-time Object Detection</h4>
+                                <div class="bg-gray-800 p-4 rounded-lg text-green-400 font-mono text-sm">
+                                    <div>Loading YOLO model...</div>
+                                    <div>✓ Model loaded successfully</div>
+                                    <div>✓ Camera initialized</div>
+                                    <div>Detecting objects: Person (95%), Car (87%), Dog (92%)</div>
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h5 class="font-semibold mb-2">Key Features:</h5>
+                                    <ul class="space-y-1 text-sm text-gray-300">
+                                        <li>• Real-time processing at 30 FPS</li>
+                                        <li>• 95% accuracy on custom dataset</li>
+                                        <li>• Multi-class object detection</li>
+                                        <li>• Edge deployment ready</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold mb-2">Technologies:</h5>
+                                    <ul class="space-y-1 text-sm text-gray-300">
+                                        <li>• YOLOv8 architecture</li>
+                                        <li>• OpenCV for preprocessing</li>
+                                        <li>• TensorFlow Lite optimization</li>
+                                        <li>• Docker containerization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                nlp: {
+                    title: 'Notebook - Live Demo',
+                    content: `
+                        <div class="space-y-6">
+                            <div class="bg-gradient-to-br from-green-900 to-blue-900 p-6 rounded-xl">
+                                <h4 class="text-lg font-semibold mb-4">Advanced Text Analysis</h4>
+                                <div class="bg-gray-800 p-4 rounded-lg text-green-400 font-mono text-sm">
+                                    <div>Initializing BERT model...</div>
+                                    <div>✓ Tokenizer loaded</div>
+                                    <div>✓ Model ready for inference</div>
+                                    <div>Analyzing: "This product is amazing!" → Positive (98.5%)</div>
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h5 class="font-semibold mb-2">Capabilities:</h5>
+                                    <ul class="space-y-1 text-sm text-gray-300">
+                                        <li>• Multi-language support</li>
+                                        <li>• Real-time sentiment scoring</li>
+                                        <li>• Emotion classification</li>
+                                        <li>• Batch processing (10K+ docs)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold mb-2">Performance:</h5>
+                                    <ul class="space-y-1 text-sm text-gray-300">
+                                        <li>• 92% accuracy on test set</li>
+                                        <li>• Sub-second response time</li>
+                                        <li>• Scalable API deployment</li>
+                                        <li>• A/B tested in production</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                }
+            };
+            
+            title.textContent = demos[projectType].title;
+            content.innerHTML = demos[projectType].content;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function openCapstonePresentation() {
+            const modal = document.getElementById('demo-modal');
+            const title = document.getElementById('demo-title');
+            const content = document.getElementById('demo-content');
+            
+            title.textContent = 'Generative AI - Live Demo';
+            content.innerHTML = `
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-br from-purple-900 to-pink-900 p-6 rounded-xl">
+                        <h4 class="text-lg font-semibold mb-4">Comprehensive ML Pipeline</h4>
+                        <div class="aspect-video bg-gray-800 rounded-lg flex items-center justify-center mb-4">
+                            <div class="text-center">
+                                <i class="fas fa-play-circle text-6xl text-purple-400 mb-2"></i>
+                                <p class="text-gray-300">Capstone Presentation Video</p>
+                                <p class="text-sm text-gray-400">15-minute comprehensive demo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="text-center p-4 bg-gray-800 rounded-lg">
+                            <i class="fas fa-database text-2xl text-blue-400 mb-2"></i>
+                            <h5 class="font-semibold">Data Pipeline</h5>
+                            <p class="text-sm text-gray-300">ETL, cleaning, feature engineering</p>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800 rounded-lg">
+                            <i class="fas fa-cogs text-2xl text-green-400 mb-2"></i>
+                            <h5 class="font-semibold">Model Training</h5>
+                            <p class="text-sm text-gray-300">Ensemble methods, hyperparameter tuning</p>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800 rounded-lg">
+                            <i class="fas fa-cloud text-2xl text-purple-400 mb-2"></i>
+                            <h5 class="font-semibold">Deployment</h5>
+                            <p class="text-sm text-gray-300">AWS, monitoring, CI/CD pipeline</p>
+                        </div>
+                    </div>
+                    <div class="bg-blue-900 p-4 rounded-lg">
+                        <h5 class="font-semibold mb-2">Project Highlights:</h5>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 94% accuracy on medical diagnosis classification</li>
+                            <li>• Real-time inference with sub-200ms latency</li>
+                            <li>• Comprehensive MLOps pipeline with monitoring</li>
+                            <li>• HIPAA-compliant data handling and privacy</li>
+                            <li>• Scalable architecture supporting 1000+ concurrent users</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeDemoModal() {
+            const modal = document.getElementById('demo-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function viewProjectDetails(project) {
+            alert(`Opening detailed documentation for ${project} project. This would typically link to a comprehensive project page with full technical specifications, code samples, and performance metrics.`);
+        }
+
+        function viewGithub(project) {
+            alert(`Opening GitHub repository for ${project} project. This would link to the standardized repository with complete documentation, setup instructions, and reproducible results.`);
+        }
+
+        // Contact functionality
+        function openContactForm() {
+            const modal = document.getElementById('contact-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function scheduleCall() {
+            alert('This would integrate with a scheduling platform like Calendly to book a consultation call.');
+        }
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! This is a demo - in a real implementation, this would send your message via a backend service.');
+            closeContactModal();
+        });
+
+        // Resume download
+        function downloadResume() {
+            // Create a comprehensive resume PDF using jsPDF
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Set font and colors
+            doc.setFont('helvetica');
+            
+            // Header
+            doc.setFontSize(24);
+            doc.setTextColor(40, 40, 40);
+            doc.text('Nokuthula Ngcongo', 20, 30);
+            
+            doc.setFontSize(14);
+            doc.setTextColor(100, 126, 234);
+            doc.text('AI/ML Engineer Enthusiast', 20, 40);
+            
+            // Contact Info
+            doc.setFontSize(10);
+            doc.setTextColor(80, 80, 80);
+            doc.text('Email: nokuthulangcongo11@gmail.com | Phone: +27 78 224-4771 | Location: Orlando East, Johanneburg', 20, 50);
+            doc.text('LinkedIn: https://www.linkedin.com/in/nokuthula-ngcongo-8221b1315 | GitHub: https://github.com/Nokuthula-ops', 20, 57);
+            
+            // Professional Summary
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text('PROFESSIONAL SUMMARY', 20, 75);
+            doc.setLineWidth(0.5);
+            doc.line(20, 78, 190, 78);
+            
+            doc.setFontSize(10);
+            doc.setTextColor(60, 60, 60);
+            const summary = 'I am an Aspiring Artificial Intelligence and Systems Development professional with hands-on experience from an intensive coding and AI bootcamp. Skilled in Python, machine learning, data analysis and web development, with practical experience in developing projects, solving technical problems, and supporting learners as a bootcamp assistant. Passionate about leveraging technology to create innovative solutions, while continuously expanding expertise in AI, software  ddevelopment, and data-driven applications.';
+            const summaryLines = doc.splitTextToSize(summary, 170);
+            doc.text(summaryLines, 20, 88);
+            
+            // Technical Skills
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text('TECHNICAL SKILLS', 20, 115);
+            doc.line(20, 118, 190, 118);
+            
+            doc.setFontSize(10);
+            doc.setTextColor(60, 60, 60);
+            doc.text('Programming: Python, SQL, R, JavaScript, C++', 20, 128);
+            doc.text('ML/AI: TensorFlow, PyTorch, Scikit-learn, Keras, OpenCV, Hugging Face', 20, 135);
+            doc.text('Cloud & DevOps: AWS (SageMaker, EC2, S3), Docker, Kubernetes, MLOps, CI/CD', 20, 142);
+            doc.text('Databases: PostgreSQL, MongoDB, Redis, Apache Spark', 20, 149);
+            doc.text('Specializations: Computer Vision, NLP, Deep Learning, Time Series Analysis', 20, 156);
+            
+            // Professional Experience
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text('PROFESSIONAL EXPERIENCE', 20, 175);
+            doc.line(20, 178, 190, 178);
+            
+            // Job 1
+            doc.setFontSize(12);
+            doc.setTextColor(40, 40, 40);
+            doc.text('Artificial Intelligence Candidate', 20, 190);
+            doc.setFontSize(10);
+            doc.setTextColor(100, 126, 234);
+            doc.text('CAPACITI | Braamfontein, JHB | July 2025 - Present', 20, 197);
+            
+            doc.setTextColor(60, 60, 60);
+            doc.text('• Completed an intensive program focused on Artificial Intelligence, Systems Development, and Data Science.', 25, 207);
+            doc.text('• Studied AI fundamentals including supervised/unsupervised learning, neural networks, and natural language processing', 25, 214);
+            doc.text('• Collaborated with peers, practiced version control with Git/GitHub, and delivered a final presentation to showcase learning', 25, 221);
+            doc.text('• Strengthened skills in Python, data preprocessing, and model evaluation', 25, 228);
+            
+            // Job 2
+            doc.setFontSize(12);
+            doc.setTextColor(40, 40, 40);
+            doc.text('Bootcamp Assistant', 20, 245);
+            doc.setFontSize(10);
+            doc.setTextColor(100, 126, 234);
+            doc.text('WeThinkCode_ | Durban, KZN | 2021 - 2023', 20, 252);
+            
+            doc.setTextColor(60, 60, 60);
+            doc.text('• Assisted learners with coding exercises, debugging, and project development', 25, 262);
+            doc.text('• Provided one-on-one support to explain programming concepts in Python, JavaScript, and web development', 25, 269);
+            doc.text('• Collaborated with instructors to deliver lessons and ensure smooth class operations', 25, 276);
+            
+            // Add second page
+            doc.addPage();
+            
+            // Education
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text('EDUCATION', 20, 30);
+            doc.line(20, 33, 190, 33);
+            
+            doc.setFontSize(12);
+            doc.text('Diploma in Tourism Management', 20, 45);
+            doc.setFontSize(10);
+            doc.setTextColor(100, 126, 234);
+            doc.text('University of South Africa | 2024 - 2025 | GPA: 3.9/4.0', 20, 52);
+            doc.setTextColor(60, 60, 60);
+            doc.text('Specialization: Eco-tourism', 20, 59);
+            
+            doc.setFontSize(12);
+            doc.setTextColor(40, 40, 40);
+            doc.text('National Certificate in Systems Development', 20, 75);
+            doc.setFontSize(10);
+            doc.setTextColor(100, 126, 234);
+            doc.text('WeThinkCode_ | 2021 - 2023', 20, 82);
+            
+            // Certifications
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text('CERTIFICATIONS', 20, 105);
+            doc.line(20, 108, 190, 108);
+            
+            doc.setFontSize(10);
+            doc.setTextColor(60, 60, 60);
+            doc.text('• Generative AI with LMMs (2025)', 20, 118);
+            doc.text('• AI Essentials (2025)', 20, 125);
+            doc.text('• Networking Basics Certificate (2024)', 20, 132);
+            doc.text('• Deep Learning Specialization - Coursera (2025)', 20, 139);
+            doc.text('• AI on Microsoft Azure (2025)', 20, 146);
+            
+            // Key Projects
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text('KEY PROJECTS', 20, 165);
+            doc.line(20, 168, 190, 168);
+            
+            doc.setFontSize(11);
+            doc.text('Sentiment Analyzer', 20, 180);
+            doc.setFontSize(10);
+            doc.setTextColor(60, 60, 60);
+            doc.text('Real-time object detection system using YOLOv8 with 95% accuracy for retail analytics', 20, 187);
+            
+            doc.setFontSize(11);
+            doc.setTextColor(40, 40, 40);
+            doc.text('Generative AI', 20, 200);
+            doc.setFontSize(10);
+            doc.setTextColor(60, 60, 60);
+            doc.text('This is an interactive dashboard that analyzes sentiment in text data, enabling users to understand emotional tone in customer reviews, social media posts, or other text content.', 20, 207);
+            
+            doc.setFontSize(11);
+            doc.setTextColor(40, 40, 40);
+            doc.text('Notebook', 20, 220);
+            doc.setFontSize(10);
+            doc.setTextColor(60, 60, 60);
+            doc.text('This tool gives users all the information they need about Nedbank as a business and their services.', 20, 227);
+            
+            // Awards & Recognition
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text('AWARDS & RECOGNITION', 20, 250);
+            doc.line(20, 253, 190, 253);
+            
+            doc.setFontSize(10);
+            doc.setTextColor(60, 60, 60);
+            doc.text('• 3 AI Patents filed and approved', 20, 263);
+            doc.text('• "Outstanding Innovation Award" - TechCorp (2023)', 20, 270);
+            doc.text('• Speaker at AI/ML Conference 2023', 20, 277);
+            
+            // Save the PDF
+            doc.save('Nokuthula_Ngcongo_AI_ML_Engineer_Resume.pdf');
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            const demoModal = document.getElementById('demo-modal');
+            const contactModal = document.getElementById('contact-modal');
+            
+            if (e.target === demoModal) {
+                closeDemoModal();
+            }
+            if (e.target === contactModal) {
+                closeContactModal();
+            }
+        });
+
+        // Initialize skill bars to 0 width
+        document.querySelectorAll('.skill-bar').forEach(bar => {
+            bar.style.width = '0%';
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f7ce7716a0740a',t:'MTc1NzkzNTk3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

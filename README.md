@@ -15,9 +15,9 @@ In addition to technical skills, I have experience as a **Coding Bootcamp Assist
 ## 📂 Portfolio Projects
 Here are some of the featured projects in this repository:
 
-- **Project 1: [Sentiment Analyzer]** – This is an interactive dashboard that analyzes sentiment in text data, enabling users to understand emotional tone in customer reviews, social media posts, or other text content.  
-- **Project 2: [Notebook]** – The goal is to demonstrate how datasets can unintentionally lead to unfair model predictions and why addressing bias is critical in AI development. 
-- **Project 3: [Generative AI]** –This tool gives users all the information they need about Nedbank as a business and their services. 
+- **Sentiment Analyzer: [https://github.com/Nokuthula-ops/Personal-emotion-analyzer]** – This is an interactive dashboard that analyzes sentiment in text data, enabling users to understand emotional tone in customer reviews, social media posts, or other text content.  
+- **Notebook: [https://github.com/Nokuthula-ops/Notebook-Project]** – The goal is to demonstrate how datasets can unintentionally lead to unfair model predictions and why addressing bias is critical in AI development. 
+- **Generative AI: [https://github.com/Nokuthula-ops/Generative-AI-Project]** –This tool gives users all the information they need about Nedbank as a business and their services. 
 
 
 
